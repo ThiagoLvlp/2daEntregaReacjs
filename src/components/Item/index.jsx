@@ -6,8 +6,8 @@ function Item(props) {
         <div className="card-body">
           <h5 className="card-title">{props.titulo}</h5>
           <p className="card-text">{props.descripcion}</p>
-          <h1 className="card-text">{props.precio}</h1>
-          <Link to={ `/detalle/${props.id}` } className="btn btn-primary">Ver Detalle</Link>
+          <h1 className="card-text">${props.precio}</h1>
+          <Link to={ `/detalle/${props.id}`} className="btn btn-primary">Ver Detalle</Link>
         </div>
       </div>
     )

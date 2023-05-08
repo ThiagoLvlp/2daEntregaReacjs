@@ -1,44 +1,22 @@
 import Flex from "../Flex/Flex";
 import Item from "../Item/index";
-import productosdata from "../../data/productosdata";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-
-function getItems() { 
-  const promesa = new Promise((resolve) => {
-    setTimeout(() => { 
-        resolve(productosdata);
-    }, 2500);
-  });
-  return promesa;
-}
-function getItemsPorCategoria(categoriaURL) { 
-  const promesa = new Promise((resolve) => {
-    setTimeout(() => { 
-      const filtro = productosdata.filter(
-        (item)  => item.categoria === categoriaURL
-      );
-      resolve(filtro);
-    }, 1000)
-  });
-  return promesa;
-}
+import { getItemsPorCategoria, getItems_ } from "../../services/dbfirebase";
 
 function ItemListCointeiner () {
     const [productos,setproductos] = useState ([]);
     const { categoriaid } = useParams();
-     useEffect(() => {
-      if (categoriaid === undefined) {
-      getItems().then((respuesta) => {
+      useEffect(() => {
+        if (categoriaid === undefined) {
+        getItems_().then((respuesta) => {
         setproductos(respuesta);
       })}
       else {
         getItemsPorCategoria(categoriaid).then((respuesta) =>
-        setproductos(respuesta))
+        setproductos(respuesta));
       }
-     }
-     )
+    },[categoriaid]);
     return (
         <Flex>
           {productos.map((productos) =>(
@@ -53,6 +31,6 @@ function ItemListCointeiner () {
           />
           ))}
         </Flex>
- );
+);
 }
 export default ItemListCointeiner;
