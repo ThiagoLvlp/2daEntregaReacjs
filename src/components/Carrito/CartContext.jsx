@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { cartContext } from "../../context/cartContext";
 
-function CartContainer() {
+function CartContainer(props) {
     const context = useContext(cartContext)
     const cart = context.cart;
+
     return (
     <div>
         <h1>Carrito de compras</h1>
@@ -15,13 +16,14 @@ function CartContainer() {
         <div className="card-body">
         <h5 className="card-title">{item.titulo}</h5>
         <p className="card-text">{item.descripcion}</p>
-        <h5 className="card-text">Cantidad = {item.count} </h5>        
+        <h5 className="card-text">Cantidad = {item.valor} </h5>        
         <h5 className="card-text">Precio = ${item.precio}</h5>
+        <button onClick={() => props.removeItem(item.id)}>Eliminar</button>
         </div>
     </div>
     </div>
-
         ))}
+        
     </div>  
     );
 }

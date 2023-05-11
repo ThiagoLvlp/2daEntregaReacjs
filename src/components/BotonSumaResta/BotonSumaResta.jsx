@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function BotonSumaResta(props) {
-  const [valor, setValor] = useState(0);
+  const [valor, setValor] = useState(1);
 
   function sumar() {
     setValor(valor + 1);

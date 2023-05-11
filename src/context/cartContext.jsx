@@ -7,6 +7,7 @@ const Provider = cartContext.Provider;
 function CartProvider (props) { 
 const [cart, setCart] = useState([]);
 const newCart = useDeepCopy(cart);
+const [producto,setproductos] = useState ([]);
 
 function addItem(producto, countFromCounter) {
    if (isItemInCart(producto.id)) {
@@ -19,10 +20,15 @@ function addItem(producto, countFromCounter) {
    }
    setCart(newCart);
    }
-function removeItem(idToDelete) {
+function removeItem(idToDelate) {
+   setCart(cart.filter((item) => item.id !== idToDelate));
 }
 function isItemInCart(id){ 
    return cart.some((isItemInCart) => isItemInCart.id === id);
+}
+function Total(){
+   let total = 0 ;
+   producto.forEach( item => total += item.valor)
 }
 return (
    <cartContext.Provider value={{ cart : cart , addItem , removeItem , isItemInCart }}>
@@ -31,3 +37,4 @@ return (
 );}
 
 export {cartContext , CartProvider } 
+
