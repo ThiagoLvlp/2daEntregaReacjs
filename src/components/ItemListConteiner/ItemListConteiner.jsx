@@ -13,23 +13,26 @@ function ItemListCointeiner () {
         setproductos(respuesta);
       })}
       else {
-        getItemsPorCategoria(categoriaid).then((respuesta) =>
-        setproductos(respuesta));
+        getItemsPorCategoria(categoriaid).then((respuesta) => {
+        setproductos(respuesta)});
       }
     },[categoriaid]);
     return (
         <Flex>
-          {productos.map((productos) =>(
-          <Item
-          key={productos.id}
-          id={productos.id}
-          titulo={productos.titulo}
-          precio={productos.precio}
-          descripcion={productos.descripcion}
-          categoria={productos.categoria}
-          img={productos.img}
-          />
-          ))}
+          {productos.map((item) =>{
+            // console.log(item)
+            console.log(item.id)
+            const producto = <Item
+            key={item.id}
+            id={item.id}
+            titulo={item.titulo}
+            precio={item.precio}
+            descripcion={item.descripcion}
+            categoria={item.categoria}
+            img={item.img}
+            /> 
+            return producto
+          })}
         </Flex>
 );
 }

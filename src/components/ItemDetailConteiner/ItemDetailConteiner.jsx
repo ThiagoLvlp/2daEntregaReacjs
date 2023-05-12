@@ -4,10 +4,8 @@ import BotonSumaResta from "../BotonSumaResta/BotonSumaResta";
 import { cartContext } from "../../context/cartContext";
 import { VerDetalle } from "../../services/dbfirebase";
 
-
-function ItemDetailCointeiner () { 
+function ItemDetailCointeiner (item) { 
       const [producto,setproductos] = useState ([]);
-      const[addedToCart, setAdeddedToCart] = useState(false)
       let { id } = useParams();
       VerDetalle( id );
 

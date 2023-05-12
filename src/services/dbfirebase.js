@@ -17,8 +17,10 @@ const firebaseConfig = {
     const productosRef = collection (db, "productos"); 
     const productosSnap = await getDocs(productosRef);
     const documents = productosSnap.docs;
-    const docsData = documents.map((doc) => doc.data());
-  return docsData ;
+    return  documents.map((doc) => {
+      return { 
+        id: doc.id, ...doc.data() };
+      });
 }
 /* ------------ Funcion VerDatalle de un solo Item -------- */
   export async function VerDetalle(idURL) {

@@ -31,7 +31,7 @@ function NavBar () {
                 <Link to="/categoria/Polietilenos"  className="nav-link">Polietilenos</Link>
               </li>
               <li className="nav-item">
-                <Link to="#" className="nav-link" >Contacto</Link>
+                <Link to="/contacto" className="nav-link" >Contacto</Link>
               </li>
               </ul>
               <Link to="/cart" id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModalCarrito" class="btn btn-secondary">

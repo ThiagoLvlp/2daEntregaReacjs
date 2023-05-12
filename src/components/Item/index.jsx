@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 function Item(props) { 
+  console.log(props);
+  console.log(props.id);
     return (
         <div className="card w-75">
         <img  className="card-img-top w-50"  src= {props.img} alt="..."/>
