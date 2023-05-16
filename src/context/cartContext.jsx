@@ -26,12 +26,16 @@ function removeItem(idToDelate) {
 function isItemInCart(id){ 
    return cart.some((isItemInCart) => isItemInCart.id === id);
 }
-function Total(){
+function getCountInCart(id){
+   const item = cart.find((itemInCart) => itemInCart.id === id);
+   return item !== undefined ? item.valor : 0;
+}
+function getTotalPrice(){
    let total = 0 ;
-   producto.forEach( item => total += item.valor)
+   return 1900 
 }
 return (
-   <cartContext.Provider value={{ cart : cart , addItem , removeItem , isItemInCart }}>
+   <cartContext.Provider value={{ cart : cart , addItem , removeItem , isItemInCart , getCountInCart , getTotalPrice}}>
       {props.children}
    </cartContext.Provider>
 );}

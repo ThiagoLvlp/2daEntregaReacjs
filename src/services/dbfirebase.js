@@ -1,5 +1,5 @@
 import { initializeApp} from "firebase/app";
-import { getFirestore, collection , getDocs, doc, getDoc, query, where } from "firebase/firestore"; 
+import { getFirestore, collection , getDocs, doc, getDoc, query, where, addDoc} from "firebase/firestore"; 
 
 
 const firebaseConfig = {
@@ -39,4 +39,8 @@ const firebaseConfig = {
   })
 return docsData ;
 }  
-  
+export async function createOrden(orden) {
+  const collectionOrdenRef = collection (db, "ordenes");
+  const response = await addDoc(collectionOrdenRef, orden);
+  return response.id
+}
